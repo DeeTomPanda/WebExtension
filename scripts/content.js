@@ -4,7 +4,7 @@ div.textContent="Hello from content.js";		//inserts text
 heading.insertAdjacentElement("afterbegin",div);	//inserts the 'div" node after the "header" element
 
 
-fetch("http://localhost:8888",{
+fetch("http://localhost:8888/",{
 	method:"GET",
 	mode:"cors",
 	headers: {
