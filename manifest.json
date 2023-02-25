@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Hello Extensions",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "permissions": ["scripting"],
+  "action": {
+    "default_popup": "webExt.html",
+    "default_icon": "webExt.png"
+  }
+}
