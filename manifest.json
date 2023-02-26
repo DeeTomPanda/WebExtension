@@ -1,27 +1,37 @@
 {
-  "manifest_version": 3,
-  "name": "Hello Extensions",
-  "description": "Base Level Extension",
-  "version": "3.0",
-  "permissions": [
-	"scripting",
-  	"activeTab",
-  	"debugger",
-  	"nativeMessaging"],
-  "action": {
-    "default_popup": "webExt.html",
-    "default_icon": "webExt.png"
-  },
-  "devtools_page": "devtools.html",
-   "content_scripts": [
-    {
-      "js": ["scripts/content.js"],
-      "matches":["<all_urls>"]
+    "manifest_version": 3,
+    "name": "CO2 Emissions",
+    "description": "Displays current CO2 emissions globally and provided resources!",
+    "version": "3.2",
+    "permissions": [
+        "scripting",
+        "activeTab",
+        "debugger",
+        "nativeMessaging",
+        "tabs"
+    ],
+    "host_permissions": [
+        "https://*/*",
+        "http://*/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "images/ext-icon.png"
+    },
+    "chrome_url_overrides": {
+        "newtab": "popup.html"
+    },
+    "devtools_page": "devtools.html",
+    "content_scripts": [
+        {
+            "js": [
+                "scripts/content.js"
+            ],
+            "matches": [ "<all_urls>" ]
+        }
+    ],
+    "background": {
+        "service_worker": "scripts/background.js"
     }
-   ],
-   "manifest_version":3,
-   "background": {
-    "service_worker": "background.js"
-   }
-   
+
 }
