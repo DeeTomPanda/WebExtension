@@ -10,6 +10,7 @@ html {
     font-weight: bold;
     color: #314d3e;
     padding: 15px;
+    font-family: 'Trocchi';
     text-align: center
 }
 
@@ -23,6 +24,7 @@ html {
     margin-right: auto;
 }
 
-.helplink{
+a {
     color: black;
+    font-family: 'Trocchi';
 }
