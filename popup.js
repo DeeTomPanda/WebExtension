@@ -56,7 +56,7 @@ chrome.tabs.query({"active": true,
  	
 	  div.innerHTML="Loading...";
 	
-	  fetch("http://localhost:8888/",{
+	  fetch("https://webzextbackend-production.up.railway.app/",{
           method:"POST",
           mode:"cors",  
           headers: {    
