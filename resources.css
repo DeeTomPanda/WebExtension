@@ -10,13 +10,13 @@ html {
 }
 
 .title {
-    font-weight: normal;
+    font-weight: Bold;
     text-align: center;
     font-size: 45px;
-    line-height: 48px;
+    line-height: 38px;
     padding: 30px;
     font-family: 'Trocchi';
-    color: #7c795d
+    color: darkslategrey;
 }
 
 button {

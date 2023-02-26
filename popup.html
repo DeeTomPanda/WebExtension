@@ -6,21 +6,22 @@
 		<div class="container">
 			<h1 class="title">Current Global CO2 Emissions</h1>
 
-			
-			<i class='co2scale'></i>
+			<p id="currCO2"></p>
+
+			<!--<script src="index.js"></script>-->
+
+			<div class='co2scale'>
+				<div id="dial"></div>
+				<!--<div class="dial dial-green"></div>
+		<div class="dial dial-yellow"></div>-->
+			</div>
+			<script src="testGetCO2.js"></script>
 			<br />
 			<center>
 				<a href="resources.html" target="_blank">Learn more</a>
+				<br />
 			</center>
 		</div>
-
-
-	<!--To do: Bug when loading script: "Refused to load the script 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js' because it violates the following Content Security Policy directive: "script-src 'self'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback." -->
-		<!--<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
-		
-	<!-- changed to index.js to invoke API calling first, but index.js doesn't run.'-->
-		<script src="index.js"></script>
-
 
 	</body>
 </html>
