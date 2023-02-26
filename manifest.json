@@ -4,6 +4,7 @@
     "description": "Displays current CO2 emissions globally and provided resources!",
     "version": "3.2",
     "permissions": [
+	"background",
         "scripting",
         "activeTab",
         "debugger",
@@ -25,11 +26,12 @@
             "js": [
                 "scripts/content.js"
             ],
-            "matches": [ "<all_urls>" ]
+            "matches": [ "<all_urls>" ],
+	    "run_at": "document_start"
         }
     ],
     "background": {
-        "service_worker": "scripts/background.js"
+        "service_worker": "background.js"
     }
 
 }

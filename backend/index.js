@@ -11,6 +11,9 @@ const PORT=8888
 const app=express()
 dotenv.config()
 
+const websiteCarbonCalculator = new WebsiteCarbonCalculator({pagespeedApiKey:process.env.API_KEY});
+const url="https://www.google.com"
+
 //middlewares
 
 app.use(cors())
@@ -19,34 +22,13 @@ app.use(express.json())
 
 //routes
 
-console.log(process.env.API_KEY);
-const url="https://www.websitecarbon.com/"
+app.post('/',async(req,res)=>{
 
-const websiteCarbonCalculator = new WebsiteCarbonCalculator({pagespeedApiKey:process.env.API_KEY});
-const result = websiteCarbonCalculator.calculateByURL(url);
-
-app.get('/',async(req,res)=>{
-	/*
-	const browser=await puppeteer.launch({
-		headless:false,
-		args: [
-        	'--ignore-certificate-errors',
-        	'--no-sandbox',
-        	'--disable-setuid-sandbox',
-        	'--disable-accelerated-2d-canvas',
-        	'--disable-gpu'
-            ]
-https://cdn.discordapp.com/attachments/1078710766305292318/1079090484456214569/IMG_20230225_2247442.jpg	})
-	//res.write(JSON.stringify("Browser launched"))
-	const page=await browser.newPage()
-	.then(async(page)=>{
-		await page.goto(url,{waitUntil:'networkidle0'})
-	})
-	await browser.close();
-	*/
+	const { URL }=await req.body
+	console.log(URL)
+        const result = await websiteCarbonCalculator.calculateByURL(URL);
 	console.log(result)
-	alert(result);
-	res.status(201).json("Hello user")}
+	res.status(201).json(result)}
 )
 
 app.listen(PORT,()=>console.log("Listening from 8888"))
