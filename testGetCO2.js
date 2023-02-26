@@ -2,16 +2,45 @@
 testGetCO2();
 
 function testGetCO2() {
-    let CO2inKG = 0;
-    for (let i = 1; i <= 12; i++) { //random function to "calculate CO2"
-        CO2inKG += i;
+    let CO2inG = 0.45;
+    for (let i = 1; i <= .1223; i++) { //random function to "calculate CO2"
+        CO2inG += i;
     }
-    CO2inKG += " KG";
-    document.getElementById("currCO2").innerHTML = CO2inKG;    
-
-    document.getElementById("dial").style.left = "135px";
-    //Range in PPM: 380ish ppm - 450ppm    
-    // https://www.co2.earth/daily-co2#:~:text=418.49%20ppm&text=This%20table%20presents%20the%20most,parts%20per%20million%20(ppm
-    // https://climate.nasa.gov/climate_resources/24/graphic-the-relentless-rise-of-carbon-dioxide/#:~:text=They%20tell%20us%20that%20levels,see%20fluctuations%20in%20the%20graph
     
+    // g --> ppm: https://www.unitconverters.net/concentration-solution/gram-liter-to-part-million-ppm.htm
+    let CO2inPpm = Math.round(CO2inG * 1001.14);
+    CO2inG = CO2inG.toFixed(3);
+    CO2inG += " g";
+    document.getElementById("currCO2").innerHTML = CO2inG;
+
+    //Convert ppm --> px scale:
+        //Range in PPM: 300ish ppm - 500ppm    --> divide into 3: 0px - 175px
+        // 300 - 369 | 370 - 429 | 430 - 550 ppm
+        // 0 - 59px | 60px - 116 | 117 - 175 px
+        // 0.85px = 1 ppm
+        //(0.94px = 1ppm) + 60
+        //(0.48px = 1ppm) + 117
+    let dialPoint = 0;
+    if (CO2inPpm <= 369) {
+        if (CO2inPpm >= 300) {
+            dialPoint = Math.trunc((CO2inPpm - 300) * 0.85);
+        }
+        else {
+            dialPoint = 0;
+        }
+    }
+    else if (CO2inPpm >= 370 && CO2inPpm <= 429) {
+        dialPoint = Math.trunc(((CO2inPpm - 370) * 0.94) + 60);
+    }
+    else {
+        if (CO2inPpm <= 550) {
+            dialPoint = Math.trunc(((CO2inPpm - 430) * 0.48) + 117);
+        }
+        else {
+            dialPoint = 175;
+        }
+    }
+
+    dialPoint += "px";
+    document.getElementById("dial").style.left = dialPoint;
 }
