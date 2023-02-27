@@ -12,7 +12,6 @@ const app=express()
 dotenv.config()
 
 const websiteCarbonCalculator = new WebsiteCarbonCalculator({pagespeedApiKey:process.env.API_KEY});
-const url="https://www.google.com"
 
 //middlewares
 
@@ -22,13 +21,18 @@ app.use(express.json())
 
 //routes
 
-app.post('/',async(req,res)=>{
-
+app.post('*',async(req,res)=>{
+	console.log("Helllo")
 	const { URL }=await req.body
 	console.log(URL)
         const result = await websiteCarbonCalculator.calculateByURL(URL);
 	console.log(result)
 	res.status(201).json(result)}
+)
+
+app.get('*',(req,res)=>{
+	console.log("Hello")
+	res.status(201).send("Nothing Here!")}
 )
 
 app.listen(PORT,()=>console.log("Listening from 8888"))
