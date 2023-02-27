@@ -9,6 +9,9 @@
     5) "Load unpacked" in the top left corner --> select the downloaded repo!<br/>
     6) Execute the plug-in like any other! (Puzzle icon!!)<br/>
 </div> <br/>
-# Video Demo:
 
-(link-here)
+
+
+## Video Demo:
+
+https://www.youtube.com/watch?v=GZiHkgaHpw0
